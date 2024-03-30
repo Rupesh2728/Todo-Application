@@ -36,7 +36,7 @@ const TaskList = () => {
   const dispatch = useDispatch();
   const handleDelete = (Id) => {
     dispatch(deleteTodo(Id));
-
+    window.location.reload();
   };
 
 

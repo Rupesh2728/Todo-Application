@@ -51,6 +51,7 @@ export const todoSlice = createSlice({
 
      // Updating the task in the todoList
     updateTodo: (state, action) => {
+      console.log(action.payload);
       const todoList = window.localStorage.getItem('todoList'); // Getting the todoList from LocalStorage
       if (todoList) {
         const todoListArr = JSON.parse(todoList);

@@ -4,8 +4,6 @@ import { useDispatch } from 'react-redux';
 import { addTodo} from '../../Redux/Slices/TodoSlice';
 
 
-
-
 const TaskInput = () => {
     const [inputValue, setInputValue] = useState('');
     const [status, setStatus] = useState('Incomplete');
@@ -30,6 +28,7 @@ const TaskInput = () => {
                   time: Date.now(),
                 }))
         setInputValue('');
+        window.location.reload();
       }
     };
   

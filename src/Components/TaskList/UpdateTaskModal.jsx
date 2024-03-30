@@ -8,8 +8,8 @@ import { useDispatch } from 'react-redux';
 const UpdateTaskModal=(props)=>{
     const todoobj={...props.todo};
     console.log(todoobj);
-    const [status, setStatus] = useState(todoobj['status']);   // Catches the state changes
-    const [inputValue, setInputValue] = useState(todoobj['title']);   // Catches the state changes
+    const [status, setStatus] = useState('');   // Catches the state changes
+    const [inputValue, setInputValue] = useState('');   // Catches the state changes
     const dispatch = useDispatch();
 
     console.log(status,inputValue);
@@ -19,19 +19,20 @@ const UpdateTaskModal=(props)=>{
       setInputValue(event.target.value);
     };
     const handleSubmit = () => {
-        console.log(inputValue,status);
         if (inputValue.trim() === '') {    // Checks whether the input value is empty or not
             window.alert('Please Enter a Valid Task!!!');
             return;
           }
 
         if (inputValue.trim() !== '' && status) {   // If not empty, it dispatches the action "updateTodo" function
-            if ({props}.todo.title !== inputValue || props.todo.status !== status) {
+            if (todoobj.title !== inputValue || todoobj.status !== status) {
                 {
-                 dispatch(updateTodo({ ...props.todo, title:inputValue, status }));
+                 dispatch(updateTodo({...todoobj, title:inputValue, status:status }));
                 }
             
         setInputValue('');
+        props.onHide();
+        window.location.reload();
       }
     }
 }
@@ -55,7 +56,7 @@ const UpdateTaskModal=(props)=>{
                   type="text"
                   className="w-full rounded-l py-2 px-4 focus:outline-none bg-[#e7e5e5]"
                   placeholder="Update todo"
-                  value={inputValue}  
+                  value={inputValue==""?todoobj.title:inputValue}  
                   onChange={handleInputChange}
                />
               </div>
@@ -64,7 +65,7 @@ const UpdateTaskModal=(props)=>{
                 <p>Status:</p>
                 <select
                   id="type"
-                  value={status}
+                  value={status==""?todoobj.status:status}
                   onChange={(e) => setStatus(e.target.value)}
                   className="w-full rounded-l py-2 px-4 focus:outline-none bg-[#e7e5e5]"
                 >
@@ -74,9 +75,10 @@ const UpdateTaskModal=(props)=>{
               </div>
 
               <div className='mt-[2rem]'>
-                <Button onClick={() => handleSubmit()} className='h-[2rem] pt-[0.1rem]'>
+               {(inputValue!="" && status!="") &&  
+               <Button onClick={() => handleSubmit()} className='h-[2rem] pt-[0.1rem]'>
                   Update Task
-                </Button>
+                </Button>}
               </div>
             </form>
           </Modal.Body>

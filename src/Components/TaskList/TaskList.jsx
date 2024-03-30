@@ -80,7 +80,7 @@ const TaskList = () => {
            }
 
            {
-            !All && !done && !notdone && incompletedtodolist.length===0 && <p>Congratulations,All Tasks are done!!!</p>
+            !All && !done && notdone && incompletedtodolist.length===0 && <p>Congratulations,All Tasks are done!!!</p>
            }
         </ul>
      </div>

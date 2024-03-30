@@ -6,7 +6,7 @@ import TaskList from './Components/TaskList/TaskList';
 const  App=()=>{
   return (
    <>
-     <TaskInput/>
+     <TaskInput/>   
      <TaskList/>
    </>
   )

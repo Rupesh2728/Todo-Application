@@ -13,14 +13,14 @@ const TaskList = () => {
   const [updatetodo,setupdatetodo] = useState({});
   
 
-  const todoList = useSelector((state) => state.todo.todoList);
+  const todoList = useSelector((state) => state.todo.todoList);    // useselector hook is used to get the required value from the state
   const sortedTodoList = [...todoList];
-  sortedTodoList.sort((a, b) => new Date(b.time) - new Date(a.time));
+  sortedTodoList.sort((a, b) => new Date(b.time) - new Date(a.time));  // We need to sort the tasks based on time i.e. latest task comes up
 
   const [TodoList,setTodoList]=useState(sortedTodoList);
 
-  const completedtodolist=sortedTodoList.filter((todo)=>todo.status==='Completed');
-  const incompletedtodolist=sortedTodoList.filter((todo)=>todo.status==='Incomplete');
+  const completedtodolist=sortedTodoList.filter((todo)=>todo.status==='Completed');  // Filter for Completed tasks
+  const incompletedtodolist=sortedTodoList.filter((todo)=>todo.status==='Incomplete');  // Filter for InComplete tasks
   
 
   const [All,setAll]=useState(true);

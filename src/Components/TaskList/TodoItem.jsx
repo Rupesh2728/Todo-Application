@@ -14,8 +14,7 @@ const TodoItem = ({updatetodofunc,setModalShow,handleDelete,todo,key}) => {
              <div className='flex flex-col'>
               <FontAwesomeIcon icon={faFilePen} className='text-[blue] mt-[0.5rem] hover:cursor-pointer' onClick={() => {setModalShow(true);updatetodofunc(todo)}}/>
               <FontAwesomeIcon icon={faTrash} className='text-[red] mt-[1rem] mr-[0.4rem] hover:cursor-pointer' onClick={() => handleDelete(todo.id)}/>
-             </div>
-             
+             </div>            
     </div>
   )
 }

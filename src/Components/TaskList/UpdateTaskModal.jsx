@@ -6,21 +6,26 @@ import { useDispatch } from 'react-redux';
 
 
 const UpdateTaskModal=(props)=>{
-    const [status, setStatus] = useState(props.todo.status);
-    const [inputValue, setInputValue] = useState(props.todo.title);
+    const todoobj={...props.todo};
+    console.log(todoobj);
+    const [status, setStatus] = useState(todoobj['status']);   // Catches the state changes
+    const [inputValue, setInputValue] = useState(todoobj['title']);   // Catches the state changes
     const dispatch = useDispatch();
+
+    console.log(status,inputValue);
+
 
     const handleInputChange = (event) => {
       setInputValue(event.target.value);
     };
     const handleSubmit = () => {
         console.log(inputValue,status);
-        if (inputValue.trim() === '') {
+        if (inputValue.trim() === '') {    // Checks whether the input value is empty or not
             window.alert('Please Enter a Valid Task!!!');
             return;
           }
 
-        if (inputValue.trim() !== '' && status) {
+        if (inputValue.trim() !== '' && status) {   // If not empty, it dispatches the action "updateTodo" function
             if ({props}.todo.title !== inputValue || props.todo.status !== status) {
                 {
                  dispatch(updateTodo({ ...props.todo, title:inputValue, status }));

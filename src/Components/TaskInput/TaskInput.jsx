@@ -7,7 +7,6 @@ import { addTodo} from '../../Redux/Slices/TodoSlice';
 
 
 const TaskInput = () => {
-    // const [todos, setTodos] = useState([]);
     const [inputValue, setInputValue] = useState('');
     const [status, setStatus] = useState('Incomplete');
     const dispatch = useDispatch();
@@ -17,12 +16,12 @@ const TaskInput = () => {
     };
   
     const handleAddTodo = () => {
-        if (inputValue.trim() === '') {
+        if (inputValue.trim() === '') {     // Checks whether the input value is empty or not
             window.alert('Please Enter a Valid Task!!!');
             return;
           }
 
-        if (inputValue.trim() !== '' && status) {
+        if (inputValue.trim() !== '' && status) {    // If not empty, it dispatches the action "addTodo" function
             dispatch(
                 addTodo({
                   id: Date.now(),
@@ -30,8 +29,6 @@ const TaskInput = () => {
                   status:status,
                   time: Date.now(),
                 }))
-
-        // setTodos([...todos, { id: Date.now(), text: inputValue }]);
         setInputValue('');
       }
     };
